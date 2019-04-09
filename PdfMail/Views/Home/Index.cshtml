@@ -1,0 +1,422 @@
+﻿<article class="main-content">
+    <header>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    </header>
+    <div class="container">
+              <div class="alert alert-dismissible alert-primary">
+            <h3 class="alert-heading" style="font-weight: bold; text-align:center">
+                Faculty and Staff Travel Request Form
+            </h3>
+        </div>
+
+              <form id="mail-pdf">
+                  <strong> <i style="font-size:28px" class="fa">&#xf2be;</i> <label for="date_today">Requester's Information:</label>  </strong>
+
+                  <div class="row">
+                      <div class="col">
+                          <input id="first_name" type="text" class="form-control" required>
+                          <small class="form-text text-muted"> First Name</small>
+                      </div>
+                      <div class="col">
+                          <input id="last_name" type="text" class="form-control" required>
+                          <small class="form-text text-muted"> Last Name</small>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="form-group">
+                      <input type="email" class="form-control" id="email" required="required" oninvalid="this.setCustomValidity('Please enter your email.')" oninput="setCustomValidity('')" />
+                      <small class="form-text text-muted"> Email </small>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <select class="form-control" id="travel_purpose" onchange="otherPurpose()" required>
+                              <option value="" disabled selected> Select Travel Purpose... </option>
+                              <option value="Conference">Conference</option>
+                              <option value="Program">Program</option>
+                              <option value="Workshop">Workshop</option>
+                              <option value="Other">Other (Please Specify)</option>
+                          </select>
+                          <small class="form-text text-muted"> Travel Purpose</small>
+                      </div>
+                  </div>
+                  <div class="row" id="travel_textbox" style="visibility:hidden; display:none">
+                      <div class="col">
+                          <textarea class="form-control" rows="2" id="other_purpose" style="resize:none" placeholder="Please specify the other travel purpose! "></textarea>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="row" onclick="showform()">
+                      <div class="col">
+
+                          <div class="form-group">
+                              <div class="radio">
+                                  <label><input id="staff_button" type="radio" name="emp_radio" checked>Staff.</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" name="emp_radio">Faculty.</label>
+                              </div>
+                              <small class="form-text text-muted"> Faculty or Staff</small>
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row" id="support1" style="visibility:hidden; display:none">
+                      <div class="col">
+                          <strong> <label for="emp_type">Faculty only - will you be an active participant in this event? (giving a paper, serving on a panel etc.)</label> </strong>
+                          <div class="form-group">
+                              <div class="radio">
+                                  <label><input type="radio" name="parti_radio" value="yes" id="parti" checked> Yes</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" name="parti_radio" value="no"> No</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row" id="support2" style="visibility:hidden; display:none">
+                      <div class="col">
+                          <strong> <label for="emp_type">Faculty only - have you received previous travel support for this fiscal year?</label> </strong>
+                          <div class="form-group">
+                              <div class="radio">
+                                  <label><input type="radio" name="support_radio" id="travel_previous" checked> Yes</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" name="support_radio" > No</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" name="support_radio"  id="travel_previous_idk"> I don't know</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <input id="departchair_name" type="text" class="form-control">
+                          <small class="form-text text-muted"> Last name of requester's supervisor / Department chair</small>
+                      </div>
+                      <div class="col">
+                          <select class="form-control" id="department">
+                              <option value="" disabled selected> Select One... </option>
+                              <option> Academic - Humanities </option>
+                              <option>Academic  - Natural and Mathematical Sciences</option>
+                              <option> Academic  - Social Sciences </option>
+                              <option>  Academic  - Professional Advancement Leadership  </option>
+                              <option>  Admissions and Student Financial Planning </option>
+                              <option> Alumni Office </option>
+                              <option>  Athletics   </option>
+                              <option> Business Office </option>
+                              <option>  Campus Security </option>
+                              <option> Career Development  </option>
+                              <option> Development Office</option>
+                              <option> Dining Services </option>
+                              <option> Human Resources</option>
+                              <option>Internships     </option>
+                              <option> IT Services  </option>
+                              <option>  Learning Opportunities Center </option>
+                              <option> Mail and Printing Services </option>
+                              <option>  Marketing </option>
+                              <option> Plant Operations  </option>
+                              <option> President's Office </option>
+                              <option>  Reeves Library </option>
+                              <option> Registrar's Office </option>
+                              <option> Student Activities </option>
+                              <option> The Wellness Center </option>
+                              <option> National Churchill Museum </option>
+                          </select>
+                          <small class="form-text text-muted"> Department </small>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 100%; position: relative;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                  </div>
+                  <br />
+                  <strong> <label for="travel_info"><i style="font-size:28px" class="fa">&#xf072;</i> Travel Information:</label> </strong>
+                  <div class="row">
+                      <div class="col">
+                          <input id="address" type="text" class="form-control" required>
+                          <small class="form-text text-muted">Travel Destination Address</small>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                      <div class="col-sm-3">
+                          <input id="city" type="text" class="form-control" required>
+                          <small class="form-text text-muted"> City</small>
+                      </div>
+                      <div class="col-sm-3">
+                          <select class="form-control" id="states" required>
+                              <option value="" disabled selected> Select State... </option>
+                              <option value="AL">Alabama (AL)</option>
+                              <option value="AK">Alaska (AK)</option>
+                              <option value="AZ">Arizona (AZ)</option>
+                              <option value="AR">Arkansas (AR)</option>
+                              <option value="CA">California (CA)</option>
+                              <option value="CO">Colorado (CO)</option>
+                              <option value="CT">Connecticut (CT)</option>
+                              <option value="DE">Delaware (DE)</option>
+                              <option value="DC">District Of Columbia (DC)</option>
+                              <option value="FL">Florida (FL)</option>
+                              <option value="GA">Georgia (GA)</option>
+                              <option value="HI">Hawaii (HI)</option>
+                              <option value="ID">Idaho (ID)</option>
+                              <option value="IL">Illinois (IL)</option>
+                              <option value="IN">Indiana (IN)</option>
+                              <option value="IA">Iowa (IA)</option>
+                              <option value="KS">Kansas (KS)</option>
+                              <option value="KY">Kentucky (KY)</option>
+                              <option value="LA">Louisiana (LA)</option>
+                              <option value="ME">Maine (ME)</option>
+                              <option value="MD">Maryland (MD)</option>
+                              <option value="MA">Massachusetts (MA)</option>
+                              <option value="MI">Michigan (MI)</option>
+                              <option value="MN">Minnesota (MN)</option>
+                              <option value="MS">Mississippi (MS)</option>
+                              <option value="MO">Missouri (MO)</option>
+                              <option value="MT">Montana (MT)</option>
+                              <option value="NE">Nebraska (NE)</option>
+                              <option value="NV">Nevada (NV)</option>
+                              <option value="NH">New Hampshire (NH)</option>
+                              <option value="NJ">New Jersey (NJ)</option>
+                              <option value="NM">New Mexico (NM)</option>
+                              <option value="NY">New York (NY)</option>
+                              <option value="NC">North Carolina (NC)</option>
+                              <option value="ND">North Dakota (ND)</option>
+                              <option value="OH">Ohio (OH)</option>
+                              <option value="OK">Oklahoma (OK)</option>
+                              <option value="OR">Oregon (OR)</option>
+                              <option value="PA">Pennsylvania (PA)</option>
+                              <option value="RI">Rhode Island (RI)</option>
+                              <option value="SC">South Carolina (SC)</option>
+                              <option value="SD">South Dakota (SD)</option>
+                              <option value="TN">Tennessee (TN)</option>
+                              <option value="TX">Texas (TX)</option>
+                              <option value="UT">Utah (UT)</option>
+                              <option value="VT">Vermont</option>
+                              <option value="VA">Virginia</option>
+                              <option value="WA">Washington</option>
+                              <option value="WV">West Virginia</option>
+                              <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
+                          </select>
+                          <small class="form-text text-muted"> State</small>
+                      </div>
+                      <div class="col-sm-3">
+                          <input id="Country" type="text" class="form-control">
+                          <small class="form-text text-muted"> Country</small>
+                      </div>
+                      <div class="col-sm-3">
+                          <input id="zip_code" type="number" class="form-control">
+                          <small class="form-text text-muted"> Zip Code</small>
+                      </div>
+                  </div>
+                  <hr />
+                  <strong> <label for="date_today"><i style="font-size:24px" class="fa">&#xf073;</i> Travel Dates:</label> </strong>
+                  <div class="row">
+                      <div class="col">
+                          <input id="travelstart_date" type="date" class="form-control">
+                          <small class="form-text text-muted"> Departure (Start Date)</small>
+                      </div>
+                      <div class="col">
+                          <input id="travelend_date" type="date" class="form-control">
+                          <small class="form-text text-muted"> Arrival (End Date)</small>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="row" onclick="personal_travel_date()">
+                      <div class="col">
+                          <strong> <label for="emp_type">Is any personal travel included with this trip?(i.e. traveling early and/or staying later than would be necessary for business purposes):</label> </strong>
+                          <div class="form-group">
+                              <div class="radio">
+                                  <label><input id="travel_personal" type="radio" name="personal_travel" value="yes" > Yes</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" id="personal_travel_NO" name="personal_travel" value="no" checked > No</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col" id="personal_travel_dates" style="visibility:hidden; display:none" >
+                          <div class="form-group">
+                              <div class="row" >
+                                  <div class="col">
+                                      <input id="personal_date_start" type="date" class="form-control">
+                                      <small class="form-text text-muted"> Start Date of Personal Time</small>
+                                  </div>
+                                  <div class="col">
+                                      <input id="personal_end_date" type="date" class="form-control">
+                                      <small class="form-text text-muted"> End Date of Personal Time</small>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 100%; position: relative;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                  </div>
+                  <br />
+                  <strong><label for="comment"><i style="font-size:24px" class="fa">&#xf09d;</i> Travel Expenses:</label> </strong>
+                  <div class="form-group">
+                      <input type="number" class="form-control" id="account_number" name="account_number">
+                      <small class="form-text text-muted"> Account number to use for charges </small>
+                  </div>
+                  <strong> <label for="date_today">Will a College purchasing card be used for this travel?</label> </strong>
+                  <div class="row">
+                      <div class="col">
+                          <div class="form-group">
+                              <div class="radio">
+                                  <label><input type="radio" name="card_radio" value="yes" id="card_payed"checked> Yes</label>
+                              </div>
+                              <div class="radio">
+                                  <label><input type="radio" name="card_radio" value="no"> No</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div onchange="sum_expenses()">
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today">Airfare expense (ex. 178.45.):</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="airfare_expense" type="number" onchange="setTwoNumberDecimal(this)" class="form-control" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today">Personal auto expense:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="personal_expense" type="number" class="form-control" onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today"> Lodging expense:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="lodging_expense" type="number" class="form-control" onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today"> Meal expense:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="meal_expense" type="number" class="form-control" onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today"> Registration and fees expense:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="registration_expense" type="number" class="form-control" onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today"> Miscellaneous:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input id="misci_expense" type="number" class="form-control" onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" />
+                              </div>
+                          </div>
+                      </div>
+                      <hr />
+                      <div class="row">
+                          <div class="col-10">
+                              <strong> <label for="date_today"> Total estimated expense of this trip:</label> </strong>
+                          </div>
+                          <div class="col">
+                              <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><i style="font-size:24px" class="fa">&#xf155;</i></span>
+                                  </div>
+                                  <input type='number' class="form-control" id='total_expense' onchange="setTwoNumberDecimal(this)" value="0.00" step="0.01" disabled />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <hr />
+                  <strong> <label for="date_today">Notes/Comments:</label> </strong>
+                  <div class="row">
+                      <div class="col">
+                          <textarea class="form-control" rows="3" id="comment" style="resize:none"></textarea>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                      <div class="col">
+                          <center>
+                              <strong><input type="checkbox" name="checkbox" value="check" id="agree" required oninvalid="this.setCustomValidity('Please check this box to ensure the information provided is accurate to the best of your knowledge.')" oninput="setCustomValidity('')" /> I certify that the information I provide is accurate to the best of my knowledge. </strong>
+                          </center>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                      <div class="col">
+                          <center>
+                              <strong><label style="color:red;" /> Please check your inbox to view a copy of this voucher. Thank you! </strong>
+                          </center>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <center>
+                              <input type="submit" value="Click here to submit" style="display: block;
+    width: 100%;
+    border: none;
+    background-color: #013668;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;" />
+                          </center>
+                      </div>
+                  </div>
+
+              </form>
+    </div>
+</article>
